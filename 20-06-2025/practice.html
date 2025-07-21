@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="head">Welcome</h1>
+    <p id="para">This is a sample website</p>
+    <p class="hello">Select the class name</p>
+    <h2 class="head">Let's start</h2>
+    <script>
+        const age= 20;
+        if( age>=18){
+            console.log("Your adult");
+        } else{
+            console.log("Your major");
+        }
+
+        const x=10;
+        for(i=0; i<=x; i++){
+            console.log(i);
+        }
+
+        document.getElementById("para").style.color="red";
+        const name = document.getElementsByClassName("head");
+        console.log(name[1]);
+        name[1].style.color="green";
+
+        document.querySelector("p").style.backgroundColor="pink";
+        const color= document.querySelectorAll(".head");
+        for(let i=0; i<color.length; i++){
+            color[i].style.backgroundColor="yellow";
+        }
+
+    </script>
+</body>
+</html>

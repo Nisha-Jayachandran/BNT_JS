@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Truthy/Falsy Checker</title>
+</head>
+
+<body>
+    <script>
+        const falseValue = ["false", 0, "", null, undefined, NaN];
+        const trueValue = ["true", 1, "hello", "0", -1];
+
+        while (true) {
+            const userinput = prompt("Enter a value to check if it's truthy or falsy:");
+
+            if (userinput === null) {
+                alert("You cancelled the prompt.");
+                break;
+            }
+
+            let value;
+            const trimmed = userinput.trim();
+
+            if (trimmed.toLowerCase() === "null") {
+                value = null;
+            } else if (trimmed.toLowerCase() === "undefined") {
+                value = undefined;
+            } else if (trimmed.toLowerCase() === "nan") {
+                value = NaN;
+            } else if (trimmed === "") {
+                value = "";
+            } else if (!isNaN(Number(trimmed)) && trimmed !== "") {
+                value = Number(trimmed);
+            } else if (trimmed === "[]") {
+                value = [];
+            } else if (trimmed === "{}") {
+                value = {};
+            } else {
+                value = trimmed;
+            }
+            
+            if (Array.isArray(value) || (typeof value === "object" && value !== null && !Array.isArray(value))) {
+                alert("The value is truthy.");
+            }
+            
+            else if (falseValue.some(item => Object.is(item, value))) {
+                alert("The value is falsy.");
+            }
+           
+            else if (trueValue.some(item => Object.is(item, value))) {
+                alert("The value is truthy.");
+            }
+            
+            else {
+                alert("The value is neither truthy nor falsy in the defined lists.");
+            }
+
+            if (!confirm("Do you want to check another value?")) {
+                alert("Thank you for using the truthy/falsy checker!");
+                break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

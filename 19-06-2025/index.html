@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function playGame() {
+            const choices = ["rock", "paper", "scissors"];
+
+            while (true) {
+                const userInput = prompt("Choose Rock, Paper, or Scissors:");
+
+
+                if (!userInput) {
+                    alert("You exited the game.");
+                    break;
+                }
+
+                const player = userInput.toLowerCase();
+                const computer = choices[Math.floor(Math.random() * 3)];
+
+
+                if (!choices.includes(player)) {
+                    alert("Invalid choice! Please enter rock, paper, or scissors.");
+                    continue;
+                }
+
+                alert(`You chose: ${player}\nComputer chose: ${computer}`);
+                if (player === computer) {
+                    alert("It's a tie!");
+                } else if (
+                    (player === "rock" && computer === "scissors") ||
+                    (player === "paper" && computer === "rock") ||
+                    (player === "scissors" && computer === "paper")
+                ) {
+                    alert("You win!");
+                } else {
+                    alert("You lose!");
+                }
+
+
+
+                const again = confirm("Do you want to play again?");
+                if (!again) {
+                    alert("Thanks for playing! See you next time");
+
+
+                    playGame();
+                    return;
+                }
+            }
+        }
+
+        playGame();
+    </script>
+
+
+</body>
+
+</html>
