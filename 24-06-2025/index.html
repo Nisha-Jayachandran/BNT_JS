@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+
+    <style>
+        .mystyle {
+            color: red;
+        }
+
+        #bnt {
+            background-color: red;
+        }
+        #box{
+            position: relative;
+            left:30px;
+            width:98px;
+            height:392px;
+            background-color:red;
+        }
+    </style>
+    <!--task1-->
+    <p id="countdown">10</p>
+    <button onclick="countdown()" id="bnt">Countdown Btn</button>
+
+    <p id="stopwatch">0</p>
+    <button onclick="startStopwatch()">Start</button>
+    <button onclick="stopStopwatch()">Stop</button><br><br>
+
+
+    <!--task 5-->
+
+    <input type="text" id="nameInput">
+    <button id="getBtn">Get Value</button>
+    <button id="setBtn">Set Value</button>
+    <br><br>
+
+        <!---tak 5-->
+        <p class="para">Lorem, ipsum dolor sit amet nam molestias velit porro saepe impedit harum dicta vel. Optio
+            accusamus ut ducimus tempora. <span> Hi</span></p>
+        <br><br>
+        <p id="pa" class="mystyle"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem cum minus autem
+            explicabo magni beatae voluptatum repellendus laudantium soluta illo porro iusto itaque alias, fugit illum
+            cupiditate omnis. Aperiam, quasi!</p><br><br>
+        <p id="par" class="mystyle"> Toggle para</p>
+        <!--task7-->
+        <button onclick="tap()" id="iea">ADD class</button>
+        <button onclick="tab()">Remove class</button>
+        <button onclick="tac()">Toggle class</button><br><br>
+
+        <!--task9-->
+
+        <div id="box"></div>
+
+        <button id="animateBtn">Animate</button>
+
+
+
+        <script>
+            //task 1
+            function countdown() {
+                let time = 10;
+                const el = document.getElementById("countdown");
+
+                const timer = setInterval(() => {
+                    el.textContent = time;
+                    time--;
+                    if (time < 0) clearInterval(timer);
+                }, 1000);
+            }
+
+            let sec = 0;
+            let timer;
+
+
+            function startStopwatch() {
+
+                if (timer) return;
+                timer = setInterval(() => {
+                    document.getElementById("stopwatch").textContent = sec;
+                    sec++;
+                }, 1000);
+            }
+
+            function stopStopwatch() {
+                clearInterval(timer);
+                timer = null;
+            }
+            // task 2 & task 10
+
+            let obj = {
+                name: "Nisha",
+                address: {
+                    city: "Chennai", area: "Ambattur"
+                },
+                hobbies: ["reading", "cooking", "dancing", "singing"],
+                greet: function () {
+                    console.log("Name:", this.name);
+                    console.log("City:", this.address.city);
+                },
+                gr: () => {
+                    console.log("Name:", this.name);
+                }
+            }
+            obj.greet();
+            obj.gr();
+
+            //task3 
+
+            let arr = [1, 4, 64, 87, 8, 3, 73, 7, 3, 7, 3];
+            let arr1 = arr.map((x) => x * 2.5);
+            console.log(arr1);
+            let arr2 = arr.filter((x) => x % 2 === 0);
+            console.log(arr2);
+            let arr3 = arr.reduce((acc, curr) => {
+                if (curr % 2 === 0) acc += curr;
+                return acc;
+            }, 0);
+            console.log(arr3);
+
+            //task4
+
+            function divide(a, b) {
+                try {
+                    if (b === 0) {
+                        throw new Error("Division by zero is not allowed");
+                    }
+                    console.log("Result", a / b);
+
+                }
+                catch (error) {
+                    console.log("Error", error.message);
+                }
+                finally {
+                    console.log("Finall attempt");
+                }
+            }
+            divide(10, 0);
+
+            //task 5 
+            // Get value
+            $("#getBtn").click(function () {
+                let name = $("#nameInput").val();
+                console.log(name);
+            });
+
+            // Set value
+            $("#setBtn").click(function () {
+                $("#nameInput").val("Nisha");
+            });
+
+            //task 6
+
+            let ni = $(".para").html();
+            console.log(ni);
+            let ie = $(".para").text();
+            console.log(ie);
+
+            //task 7
+            function tap() {
+                $(".para").addClass("mystyle");
+
+            }
+            function tab() {
+                $("#pa").removeClass("mystyle");
+            }
+
+            function tac() {
+                $("#par").toggleClass("mystyle");
+
+            }
+
+            //task8
+
+            $("#bnt").click(function () {
+                alert("Button Clicked!");
+            });
+
+            $("#iea").mouseover(function () {
+                console.log("mouse overed")
+            })
+
+            //task 9
+
+            $("#animateBtn").click(function () {
+                $("#box").animate({
+                    width: "200px",
+                    height: "200px",
+                    left: "50px",
+                    
+                }, 1000);
+            });
+
+
+
+
+        </script>
+</body>
+
+</html>

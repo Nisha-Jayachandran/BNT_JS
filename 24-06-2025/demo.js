@@ -1,0 +1,47 @@
+let jsonString = '{"name":"Bob","age": 30}';
+        let parsedObj = JSON.parse(jsonString);
+
+        console.log(parsedObj);
+
+        console.log(parsedObj.name); // "Bob"
+        console.log(parsedObj.age);
+
+        let backToJson = JSON.stringify(parsedObj);
+        console.log(backToJson); // '{"name":"Bob","age":30}'
+
+
+        // for each
+        const student = {
+            name: "nisha",
+            age: 21,
+            skills: {
+                frontend: {
+                    names: ["html", "css", "js"],
+                    experience: "2 months"
+                },
+                backend: {
+                    names: ["java", "python"],
+                    experience: "3 months"
+                }
+            }
+        }
+        Object.keys(student.skills).forEach((skill) => {
+            console.log(`skills: ${skill}`);
+            const name = student.skills[skill];
+            console.log(`experience: ${name.experience}`)
+            name.names.forEach((course) => {
+                console.log(`course: ${course}`)
+            })
+        });
+
+        const obj2 = {
+            name: "Praveen",
+            greet: function () {
+                const gre = () => {
+                    console.log(this.name);
+                };
+                gre();
+            },
+           
+        };
+        obj2.greet();
